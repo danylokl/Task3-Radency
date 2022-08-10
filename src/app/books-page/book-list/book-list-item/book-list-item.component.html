@@ -1,24 +1,19 @@
 <div class="wrapper">
-  <a>
-    <div class="item">
-      <img
-        src="{{ 'data:image/jpg;base64,' + book.cover }}"
-        class="list-group-item-text"
-        width="100"
-        height="100"
-      />
-      <div class="up">
-        <p>{{ book.title }}</p>
-
-        <p>{{ book.author }}</p>
-      </div>
-      <div class="bottom">
-        <p>Reviews {{ book.reviews.length }}</p>
-
-        <p>Score {{ book.getAvgBookScore() }}</p>
-      </div>
-      <button (click)="openDialog()">detail</button>
-      <button>edit</button>
+  <div class="item">
+    <img
+      src="{{ 'data:image/jpg;base64,' + book.cover }}"
+      class="list-group-item-text"
+      width="100"
+      height="100"
+    />
+    <div class="up">
+      <p>{{ book.title }}</p>
+      <p>
+        Reviews {{ book.reviews.length }} Score {{ book.getAvgBookScore() }}
+      </p>
     </div>
-  </a>
+    <div class="bottom"></div>
+    <button (click)="openDialog()">detail</button>
+    <button (click)="bookSelected(book)">edit</button>
+  </div>
 </div>

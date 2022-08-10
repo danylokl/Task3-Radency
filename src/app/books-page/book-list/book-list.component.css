@@ -6,3 +6,7 @@
   overflow-y: scroll;
   max-height: 200px;
 }
+button {
+  width: min-content;
+  height: min-content;
+}

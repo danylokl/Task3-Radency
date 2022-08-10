@@ -1,35 +1,81 @@
 <div class="wrapper">
   <div class="left">
-    <label for="name">Title</label>
-    <input type="text" id="name" class="form-control" #titleInput />
-    <label for="name">Cover</label>
-    <input type="text" id="name" class="form-control" #coverInput />
-    <label for="name">Genre</label>
-    <input type="text" id="name" class="form-control" #genreInput />
-    <label for="name">Author</label>
-    <input type="text" id="name" class="form-control" #authorInput />
+    <label for="Title">Title</label>
+    <input
+      [value]="
+        bookService.bookSelected ? bookService.bookSelectedItem.title : ''
+      "
+      type="text"
+      id="Title"
+      class="form-control"
+      #titleInput
+    />
+    <label for="Cover">Cover</label>
+    <input
+      type="file"
+      id="Cover"
+      accept=".png, .jpg, .jpeg"
+      class="form-control"
+
+      #coverInput
+    />
+    <label for="Genre">Genre</label>
+    <input
+      [value]="
+        bookService.bookSelected ? bookService.bookSelectedItem.genre : ''
+      "
+      type="text"
+      id="Genre"
+      class="form-control"
+      #genreInput
+    />
+    <label for="Author">Author</label>
+    <input
+      [value]="
+        bookService.bookSelected ? bookService.bookSelectedItem.author : ''
+      "
+      type="text"
+      id="Author"
+      class="form-control"
+      #authorInput
+    />
   </div>
 
   <div class="right">
-    <label for="name">Content</label>
-    <input type="text" id="name" class="form-control content" #contentInput />
+    <label for="Content">Content</label>
+    <input
+      [value]="
+        bookService.bookSelected ? bookService.bookSelectedItem.content : ''
+      "
+      type="text"
+      id="Content"
+      class="form-control content"
+      #contentInput
+    />
   </div>
 </div>
 <div class="buttons">
   <button
+    [innerText]="bookService.bookSelected ? 'Edit' : 'Add'"
     type="submit"
     (click)="
-      onSubmit(
-        titleInput.value,
-        coverInput.value,
-        genreInput.value,
-        authorInput.value,
-        contentInput.value
-      )
+      bookService.bookSelected
+        ? onUpdate(
+            titleInput.value,
+            coverInput.value,
+            genreInput.value,
+            authorInput.value,
+            contentInput.value
+          )
+        : onSubmit(
+            titleInput.value,
+            coverInput.value,
+            genreInput.value,
+            authorInput.value,
+            contentInput.value
+          )
     "
-  >
-    Add
-  </button>
+  ></button>
   <button
     type="button"
     (click)="

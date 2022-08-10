@@ -17,4 +17,8 @@ export class BookListItemComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(ViewBookComponent, { data: this.book });
   }
+  bookSelected(book: Book) {
+    this.bookService.bookSelected = true;
+    this.bookService.bookSelectedItem = book;
+  }
 }

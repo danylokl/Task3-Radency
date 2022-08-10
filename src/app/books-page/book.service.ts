@@ -4,6 +4,8 @@ import { Book } from './book.model';
 import { Review } from './review.model';
 @Injectable()
 export class BookService {
+  public bookSelected: boolean = false;
+  public bookSelectedItem!: Book;
   private text =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam fermentum ut felis nec dapibus. Pellentesque condimentum massa ac mauris egestas pharetra. Pellentesque tristique euismod molestie. Sed feugiat nunc ultrices mauris posuere, eget aliquam nibh elementum. Donec vitae leo neque. Maecenas nec venenatis enim. Sed condimentum ultrices turpis, in suscipit massa ornare sit amet. Integer cursus vestibulum odio sit amet tempus. Vestibulum venenatis malesuada justo, ut efficitur ex condimentum aliquam. Phasellus luctus iaculis ante. Ut nisi augue, gravida eget nisl a, laoreet molestie nisl. Praesent euismod ligula ut tortor convallis, interdum ultricies urna euismod. Pellentesque scelerisque tortor est, at suscipit justo egestas vel.';
   private image =
@@ -32,7 +34,29 @@ export class BookService {
   }
   addBook(book: Book): Observable<Book> {
     this.books.push(book);
-
     return of(book);
+  }
+  updateBook(
+    title: string,
+    cover: string,
+    genre: string,
+    author: string,
+    content: string
+  ) {
+    var toUpdateBook = this.books.find(
+      (book) => book.title == this.bookSelectedItem.title
+    );
+    if (toUpdateBook !== undefined) {
+      var index = this.books.indexOf(toUpdateBook);
+      this.books[index] = new Book(
+        title,
+        cover,
+        genre,
+        author,
+        content,
+        this.bookSelectedItem.reviews
+      );
+      this.bookSelected = false;
+    }
   }
 }
