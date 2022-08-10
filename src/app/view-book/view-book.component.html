@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="wrapper">
+    <div class="img-rating-review">
+      <img
+        src="{{ 'data:image/jpg;base64,' + book.cover }}"
+        width="100"
+        height="100"
+      />
+      <p>
+        Rating: {{ book.getAvgBookScore() }} Reviews: {{ book.reviews.length }}
+      </p>
+    </div>
+    <div>
+      <p>{{ book.title }}</p>
+      <p>{{ book.author }} {{ book.genre }}</p>
+      <div class="content">
+        {{ book.content }}
+      </div>
+
+      <ul>
+        <li *ngFor="let review of book.reviews">
+          <p>{{ review.reviewer }}</p>
+          <div class="review-message">
+            {{ review.message }}
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

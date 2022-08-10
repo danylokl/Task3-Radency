@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <div class="left">
+    <label for="name">Title</label>
+    <input type="text" id="name" class="form-control" #titleInput />
+    <label for="name">Cover</label>
+    <input type="text" id="name" class="form-control" #coverInput />
+    <label for="name">Genre</label>
+    <input type="text" id="name" class="form-control" #genreInput />
+    <label for="name">Author</label>
+    <input type="text" id="name" class="form-control" #authorInput />
+  </div>
+
+  <div class="right">
+    <label for="name">Content</label>
+    <input type="text" id="name" class="form-control content" #contentInput />
+  </div>
+</div>
+<div class="buttons">
+  <button
+    type="submit"
+    (click)="
+      onSubmit(
+        titleInput.value,
+        coverInput.value,
+        genreInput.value,
+        authorInput.value,
+        contentInput.value
+      )
+    "
+  >
+    Add
+  </button>
+  <button
+    type="button"
+    (click)="
+      titleInput.value = '';
+      coverInput.value = '';
+      genreInput.value = '';
+      authorInput.value = '';
+      contentInput.value = ''
+    "
+  >
+    Clean
+  </button>
+</div>

@@ -1,0 +1,22 @@
+.item {
+  display: flex;
+  flex: 50%;
+}
+.up {
+  display: flex;
+  height: fit-content;
+
+  align-content: flex-start;
+}
+.bottom {
+  display: flex;
+  height: fit-content;
+  align-self: flex-end;
+}
+button {
+  height: 20px;
+  width: 30px;
+  font-size: 8px;
+  padding: 0%;
+  vertical-align: top;
+}
